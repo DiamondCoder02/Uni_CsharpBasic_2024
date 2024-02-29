@@ -9,6 +9,10 @@ namespace Uni_CsharpBasic_2024.Lesson2
     internal class Task2
     {
         private readonly int size, a, b;
+        public static void Lesson2_2()
+        {
+            Console.WriteLine("No idea how works");
+        }
         public Task2(int size, int a, int b)
         {
             this.size = size;
