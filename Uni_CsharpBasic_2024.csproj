@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Lesson3\" />
+    <Folder Include="CandyBox_cs\Ascii\" />
+    <Folder Include="CandyBox_cs\Languages\" />
+    <Folder Include="Lesson4\" />
   </ItemGroup>
 
 </Project>
