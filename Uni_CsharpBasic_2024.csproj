@@ -8,9 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CandyBox_cs\Ascii\" />
-    <Folder Include="CandyBox_cs\Languages\" />
+    <Compile Remove="CandyBox_cs\Ascii\**" />
+    <EmbeddedResource Remove="CandyBox_cs\Ascii\**" />
+    <None Remove="CandyBox_cs\Ascii\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Lesson4\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Spectre.Console" Version="0.48.0" />
+    <PackageReference Include="Spectre.Console.Cli" Version="0.48.0" />
   </ItemGroup>
 
 </Project>
