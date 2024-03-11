@@ -75,7 +75,8 @@ namespace Uni_CsharpBasic_2024.CandyBox_cs
                 if (Console.ReadKey(true).Key == ConsoleKey.Y) IVariables.debugMode = true;;
                 */
                 IVariables.debugMode = true;
-                _Controller.MainGame();
+                Boolean newGame = true;
+                Controller.MainGame(newGame);
             }
         }
 
