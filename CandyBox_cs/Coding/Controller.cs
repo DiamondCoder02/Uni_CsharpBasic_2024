@@ -1,10 +1,4 @@
-﻿using Spectre.Console;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
+﻿using System.Timers;
 
 namespace Uni_CsharpBasic_2024.CandyBox_cs.Coding
 {
@@ -12,7 +6,8 @@ namespace Uni_CsharpBasic_2024.CandyBox_cs.Coding
     // https://candybox2.fandom.com/wiki/Savegame_cheats#Finish_the_game
     internal class Controller
     {
-        public static void MainGame(Boolean newGame)
+        
+        public static void MainGame(bool newGame)
         {
             Console.Clear();
             if (!newGame)
@@ -20,7 +15,10 @@ namespace Uni_CsharpBasic_2024.CandyBox_cs.Coding
                 Console.WriteLine("TODO - Atempting to load old save...");
             }
             TimerThread();
-            while (Console.ReadKey(true).Key != ConsoleKey.Escape) { }
+            while (MenuControl.pressedKeyForControl != ConsoleKey.Escape)
+            {
+                MenuControl.pressedKeyForControl = Console.ReadKey(true).Key;
+            }
         }
 
         private static void TimerThread()
@@ -37,7 +35,7 @@ namespace Uni_CsharpBasic_2024.CandyBox_cs.Coding
             // TODO https://candybox2.fandom.com/wiki/The_Lollipop_farm#Trivia
             // Fibonachi
             IVariables.candies += 1 * IVariables.candyMultip;
-            if (IVariables.loliMultip <= 1) { IVariables.lollipops += 1 * ((int)IVariables.loliMultip); }
+            if (IVariables.loliMultip <= 21) { IVariables.lollipops += 1 * ((int)IVariables.loliMultip); }
             MenuControl.MainTableRender();
         }
 

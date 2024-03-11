@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using Spectre.Console;
+﻿using System.Runtime.InteropServices;
 using Uni_CsharpBasic_2024.CandyBox_cs.Coding;
 
 namespace Uni_CsharpBasic_2024.CandyBox_cs
@@ -75,8 +67,7 @@ namespace Uni_CsharpBasic_2024.CandyBox_cs
                 if (Console.ReadKey(true).Key == ConsoleKey.Y) IVariables.debugMode = true;;
                 */
                 IVariables.debugMode = true;
-                Boolean newGame = true;
-                Controller.MainGame(newGame);
+                Controller.MainGame(true);
             }
         }
 
