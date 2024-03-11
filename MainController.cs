@@ -1,4 +1,6 @@
-﻿using test;
+﻿using GenericsExampleBasic;
+using ListManagement;
+using test;
 using Uni_CsharpBasic_2024.CandyBox_cs;
 using Uni_CsharpBasic_2024.Lesson2;
 
@@ -14,8 +16,10 @@ namespace Uni_CsharpBasic_2024
             Console.WriteLine("1. Lesson1   HelloWorld");
             Console.WriteLine("2. Lesson2_1 Ask 3 Number");
             Console.WriteLine("3. Lesson2_2 Random Number Gen. (Task2.cs)");
-            // string? readline = Console.ReadLine();
-            string readline = "0"; // TODO, Fuck me
+            Console.WriteLine("4. Lesson4 TeacherShit1");
+            Console.WriteLine("5. Lesson5 TeacherShit2");
+            string? readline = Console.ReadLine();
+            // string readline = "0"; // TODO, Fuck me
             switch (readline)
             {
                 case "0":
@@ -29,6 +33,12 @@ namespace Uni_CsharpBasic_2024
                     break;
                 case "3":
                     Task2.Lesson2_2();
+                    break;
+                case "4":
+                    Lesson4Thing.ProgStart();
+                    break;
+                case "5":
+                    Lesson5.ProgStart();
                     break;
                 case "69":
                     Console.WriteLine("https://f95zone.to/");
