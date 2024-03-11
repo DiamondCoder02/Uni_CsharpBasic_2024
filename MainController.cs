@@ -1,8 +1,4 @@
-﻿using GenericsExampleBasic;
-using ListManagement;
-using test;
-using Uni_CsharpBasic_2024.CandyBox_cs;
-using Uni_CsharpBasic_2024.Lesson2;
+﻿using Uni_CsharpBasic_2024.CandyBox_cs;
 
 namespace Uni_CsharpBasic_2024
 {
@@ -24,21 +20,6 @@ namespace Uni_CsharpBasic_2024
             {
                 case "0":
                     CB_init.CB_initiate();
-                    break;
-                case "1":
-                    Test.Lesson1();
-                    break;
-                case "2":
-                    Lesson2.Lesson2.Lesson2_1();
-                    break;
-                case "3":
-                    Task2.Lesson2_2();
-                    break;
-                case "4":
-                    Lesson4Thing.ProgStart();
-                    break;
-                case "5":
-                    Lesson5.ProgStart();
                     break;
                 case "69":
                     Console.WriteLine("https://f95zone.to/");
