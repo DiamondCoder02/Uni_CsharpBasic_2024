@@ -62,7 +62,7 @@ namespace Uni_CsharpBasic_2024.CandyBox_cs
             while (cki.Key != ConsoleKey.Escape);
             */
 
-            if (Console.ReadKey(false).Key != ConsoleKey.Enter)
+            if (Console.ReadKey(true).Key != ConsoleKey.Enter)
             {
                 Console.Clear();
                 Console.WriteLine("I'm sad :(\nSee you later!");
@@ -72,10 +72,10 @@ namespace Uni_CsharpBasic_2024.CandyBox_cs
                 /* TODO - Enable this
                 Console.Clear();
                 Console.WriteLine("Do you wanna enable Debug mode? [y/s]");
-                if (Console.ReadKey(false).Key == ConsoleKey.Y) Controller.debugMode = true;
+                if (Console.ReadKey(true).Key == ConsoleKey.Y) IVariables.debugMode = true;;
                 */
-                Controller.debugMode = true;
-                Controller.controller();
+                IVariables.debugMode = true;
+                _Controller.MainGame();
             }
         }
 

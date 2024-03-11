@@ -18,8 +18,8 @@ namespace Uni_CsharpBasic_2024
             Console.WriteLine("3. Lesson2_2 Random Number Gen. (Task2.cs)");
             Console.WriteLine("4. Lesson4 TeacherShit1");
             Console.WriteLine("5. Lesson5 TeacherShit2");
-            string? readline = Console.ReadLine();
-            // string readline = "0"; // TODO, Fuck me
+            // string? readline = Console.ReadLine();
+            string readline = "0"; // TODO, Fuck me
             switch (readline)
             {
                 case "0":
