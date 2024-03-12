@@ -10,12 +10,13 @@ namespace Uni_CsharpBasic_2024.CandyBox_cs.Coding
         public static void MainTableRender()
         {
             keyPressDetectionAndLocationChange();
-            string[] test;
+            string[] RowTextControl;
             switch (IVariables.currentLocation)
             {
-                case "Clicker": test = Clicker.Pclicker(); break;
-                // case "Village": test = Village.Pvillage(); break;
-                default: test = ["ERROR", "ERROR", "ERROR"]; IVariables.currentLocation = "Clicker"; break;
+                case "Clicker": RowTextControl = Clicker.Pclicker(); break;
+                // case "Village": RowTextControl = Village.Pvillage(); break;
+                case "Config": RowTextControl = Config.Pconfig(); break;
+                default: RowTextControl = ["ERROR", IVariables.currentLocation, "ERROR"]; IVariables.currentLocation = "Clicker"; break;
             }
 
             string[] defMenu = defaultMenu();
@@ -35,11 +36,11 @@ namespace Uni_CsharpBasic_2024.CandyBox_cs.Coding
             table.Columns[2].Width(15);
 
             table.AddRow(
-                "Controls:\n----------\n" +
-                defMenu[3] + "\n----------\n" +
-                test[0],
-                test[1],
-                ""
+                "Controls:\n" +
+                defMenu[3] +
+                RowTextControl[0],
+                RowTextControl[1],
+                RowTextControl[2]
             );
             table.Expand();
             // Render the table to the console
@@ -53,22 +54,24 @@ namespace Uni_CsharpBasic_2024.CandyBox_cs.Coding
 
             switch (pressedKeyForControl)
             {
-                case ConsoleKey.D1: IVariables.currentLocation = "Clicker"; break;
-                case ConsoleKey.D2: IVariables.currentLocation = "Inventory"; break;
-                case ConsoleKey.D3: { IVariables.currentLocation = (IVariables.foundControls[1][0] ? "Map" : "Village"); break; }
-                case ConsoleKey.D4: IVariables.currentLocation = "LollipopFarm"; break;
-                case ConsoleKey.D5: IVariables.currentLocation = "Cauldron"; break;
-                case ConsoleKey.D6: IVariables.currentLocation = "Save"; break;
-                case ConsoleKey.D7: IVariables.currentLocation = "Config"; break;
+                case ConsoleKey.D1: { if (IVariables.unlockedMenus[0]) { IVariables.currentLocation = "Clicker"; }; break; }
+                case ConsoleKey.D2: { if (IVariables.unlockedMenus[4]) { IVariables.currentLocation = "Inventory"; }; break; }
+                case ConsoleKey.D3: { if (IVariables.unlockedMenus[5]) { IVariables.currentLocation = (IVariables.foundControls[1][0] ? "Map" : "Village"); } break; }
+                case ConsoleKey.D4: { if (IVariables.unlockedMenus[6]) { IVariables.currentLocation = "LollipopFarm"; }; break; }
+                case ConsoleKey.D5: { if (IVariables.unlockedMenus[7]) { IVariables.currentLocation = "Cauldron"; }; break; }
+                case ConsoleKey.D6: { if (IVariables.unlockedMenus[2]) { IVariables.currentLocation = "Save"; }; break; }
+                case ConsoleKey.D7: { if (IVariables.unlockedMenus[1]) { IVariables.currentLocation = "Config"; }; break; }
             }
-
         }
 
         private static string[] defaultMenu()
         {
             bool[] unMen = IVariables.unlockedMenus;
+            string topMenu = "", sweets = (IVariables.candies >= 0 ? "Candies: " + IVariables.candies : ""), basicControls = "";
 
-            string topMenu =
+            if (IVariables.unlockedMenus[0])
+            {
+                topMenu =
                 (unMen[0] ? "CandyBox" : " - ") + " | " +
                 (unMen[4] ? "Inventory" : " - ") + " | " +
                 (unMen[5] ? "Map" : " - ") + " | " +
@@ -77,22 +80,27 @@ namespace Uni_CsharpBasic_2024.CandyBox_cs.Coding
                 (unMen[2] ? "Save" : " - ") + " | " +
                 (unMen[1] ? "Config" : " - ");
 
-            string sweets = (IVariables.candies >= 0 ? "Candies: " + IVariables.candies + "  ||  " : "") +
+                sweets = (IVariables.candies >= 0 ? "Candies: " + IVariables.candies + "  ||  " : "") +
                 (IVariables.chocolate >= 0 ? "Chocolate: " + IVariables.chocolate + "  ||  \n" : "") +
                 (IVariables.lollipops >= 0 ? "Lollipops: " + IVariables.lollipops + "  ||  " : "") +
                 (IVariables.painsAuChocolat >= 0 ? "painsAuChocolat: " + IVariables.painsAuChocolat : "");
 
+                // Add some rows
+                basicControls =
+                    "----------\n" +
+                    (unMen[0] ? "1 - CandyBox" : "? - ???") + "\n" +
+                    (unMen[4] ? "2 - Inventory" : "? - ???") + "\n" +
+                    (unMen[5] ? "3 - Map" : "? - ???") + "\n" +
+                    (unMen[6] ? "4 - Lollipop Farm" : "? - ???") + "\n" +
+                    (unMen[7] ? "5 - Cauldron" : "? - ???") + "\n" +
+                    (unMen[2] ? "6 - Save" : "? - ???") + "\n" +
+                    (unMen[1] ? "7 - Config" : "? - ???") +
+                    "\n----------\n";
+            }
+
             string healthBar = (IVariables.unlockedMenus[3] ? "Health: " + IVariables.currentHealth + " / " + IVariables.maxHealth : "");
 
-            // Add some rows
-            string basicControls =
-                (unMen[0] ? "1 - CandyBox" : "? - ???") + "\n" +
-                (unMen[4] ? "2 - Inventory" : "? - ???") + "\n" +
-                (unMen[5] ? "3 - Map" : "? - ???") + "\n" +
-                (unMen[6] ? "4 - Lollipop Farm" : "? - ???") + "\n" +
-                (unMen[7] ? "5 - Cauldron" : "? - ???") + "\n" +
-                (unMen[2] ? "6 - Save" : "? - ???") + "\n" +
-                (unMen[1] ? "7 - Config" : "? - ???");
+            
 
             return [topMenu, sweets, healthBar, basicControls];
         }

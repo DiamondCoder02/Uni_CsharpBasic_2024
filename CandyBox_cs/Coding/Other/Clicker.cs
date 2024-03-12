@@ -5,16 +5,9 @@
         private static int requestCost = 30;
         public static string[] Pclicker()
         {
-            string[] controls = [
-                (IVariables.foundControls[0][0] ? "E - Eat Candy" : "? - ???"),
-                (IVariables.foundControls[0][1] ? "T - Throw Candy" : "? - ???"),
-                (IVariables.foundControls[0][2] ? "F - Request Feature" : "? - ???")
-            ];
-
             if (IVariables.candies >= 0) { IVariables.foundControls[0][0] = true; };
             if (IVariables.candies >= 10) { IVariables.foundControls[0][1] = true; };
             if (IVariables.candies >= 30) { IVariables.foundControls[0][2] = true; };
-
 
             switch (MenuControl.pressedKeyForControl)
             {
@@ -36,16 +29,28 @@
                     break;
             }
 
+
+            string[] controls = [
+                (IVariables.foundControls[0][0] ? "E - Eat Candy" : "? - ???"),
+                (IVariables.foundControls[0][1] ? "T - Throw Candy" : "? - ???"),
+                (IVariables.foundControls[0][2] ? "F - Request Feature" : "? - ???")
+            ];
+            string controlString = "Clicker:\n";
+            for (int i = 0; i < controls.Length; i++)
+            { controlString += (controls[i] + "\n"); }
+
             string mainContext = "To eat candy, press E" + "\n" +
                 (IVariables.eatenCandies > 0 ? "You have eaten " + IVariables.eatenCandies + " candies!" : "") + "\n\n" +
                 (IVariables.foundControls[0][1] ? "To throw candy, press T" : "") + "\n" +
                 (IVariables.thrownCandies > 0 ? "You have thrown " + IVariables.thrownCandies + " candies. You monster!" : "") + "\n\n" +
                 (requestCost > 1 ? IVariables.foundControls[0][2] ? "To request a new feature, press F ( cost: " + requestCost + " candies )" : "" : "Map is now unlocked. Have fun exploring the world!");
 
+            string tipRightSide = "Welcome to CandyBox!";
+
             string[] tableContext = [
-                "Clicker:\n" + controls[0] + "\n" + controls[1] + "\n" + controls[2],
+                controlString,
                 mainContext,
-                ""
+                tipRightSide
             ];
             return tableContext;
         }

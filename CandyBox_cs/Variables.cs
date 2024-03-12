@@ -1,6 +1,7 @@
 ﻿public interface IVariables
 {
     public static bool debugMode = false;
+    public static string language = "en";
 
     public static int candies = -1;
     public static int candyMultip = 1;
@@ -42,7 +43,7 @@
         ],
         [ // Village
             false, // Main Map
-            false, // Third house (Kex Needed)
+            false, // Third house (Key Needed)
         ],
         [ // Main Map
             //Special || ACTIVATE ONLY ONCE
